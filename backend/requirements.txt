@@ -1,0 +1,11 @@
+# Install torch separately first (see README): the right wheel depends on your GPU.
+transformers>=4.57
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+av>=14
+numpy>=2
+
+# Tests
+pytest>=8
+httpx>=0.27

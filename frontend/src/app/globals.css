@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #f4f1ea;
+  --color-surface: #fcfbf8;
+  --color-ink: #1c1a17;
+  --color-ink-soft: #4f4b43;
+  --color-muted: #6b675e;
+  --color-line: #dfdacd;
+  --color-record: #c0392b;
+  --color-good: #1d7a3e;
+  --color-bad: #a8321f;
+  --font-sans: var(--font-instrument);
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-jetbrains);
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/* Transcript words: highlighter marks on paper. */
+.word {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0 0.14em;
+  margin: 0 -0.14em;
+  border-radius: 0.2em;
+  background-color: var(--hl, transparent);
+  transition: background-color 120ms ease;
+  box-decoration-break: clone;
+}
+.word:hover {
+  box-shadow: inset 0 -2px 0 var(--color-ink);
+}
+.word[data-active="true"] {
+  background-color: var(--color-ink);
+  color: var(--color-surface);
+}
+.word-tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding-bottom: 0.2em;
+  color: var(--color-ink-soft);
+}
+.word[data-active="true"] .word-tag {
+  color: var(--color-surface);
+}
+.punct {
+  padding: 0 0.04em;
+  border-radius: 0.15em;
+  background-color: var(--hl, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
